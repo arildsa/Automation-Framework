@@ -8,7 +8,7 @@ public class TestThree extends BaseTest {
     private String searchString = "George Washington";
 
     @Test
-    public void TestTwoTest()
+    public void TestThreeTest()
     {
         homePage.getSearchBar().click();
         homePage.getSearchBar().sendKeys(searchString);
