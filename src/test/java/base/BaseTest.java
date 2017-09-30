@@ -26,7 +26,7 @@ public class BaseTest extends CustomCommands{
     {
         DesiredCapabilities capabilities = DesiredCapabilities.chrome();
         capabilities.setCapability(CapabilityType.BROWSER_NAME,"Chrome");
-        System.setProperty("webdriver.chrome.driver","resources/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver","lib/chromedriver.exe");
         driver = new ChromeDriver();
         driver.navigate().to("https://www.wikipedia.org/");
         homePage = new HomePage(driver);
