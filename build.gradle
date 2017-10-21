@@ -13,22 +13,30 @@ task wrapper(type: Wrapper) {
     gradleVersion = '3.5'
 }
 
-test {
-    useTestNG()
+task testMulti(type:Test) {
     include 'tests/*'
-    maxParallelForks = 1
+    maxParallelForks = 4
     reports {
         junitXml.enabled = false
         html.enabled = true
     }
-    dependsOn 'cleanTest'
 }
+
+task testSingle(type: Test){
+    maxParallelForks = 1
+    include 'threadsafe/*'
+
+}
+
+testSingle.mustRunAfter(test)
 
 ext {
     supportedVariables = ["password"]
 }
 
 tasks.withType(Test) {
+    useTestNG()
+    dependsOn 'cleanTest'
     supportedVariables.each {
         if (project.hasProperty(it)) {
             systemProperties[it] = project.properties[it]
@@ -37,6 +45,7 @@ tasks.withType(Test) {
     testLogging.exceptionFormat = 'full'
     testLogging {
         events "passed", "failed", "standardOut"
+        displayGranularity 1
     }
 }
 
