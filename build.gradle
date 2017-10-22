@@ -5,30 +5,25 @@ apply plugin: 'java'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-sourceSets {
-    test.java.srcDirs 'src/test/java'
-}
-
 task wrapper(type: Wrapper) {
     gradleVersion = '3.5'
 }
 
-task testMulti(type:Test) {
-    include 'tests/*'
-    maxParallelForks = 4
-    reports {
-        junitXml.enabled = true
-        html.enabled = true
-    }
+sourceSets {
+    test.java.srcDirs 'src/test/java'
 }
 
-task testSingle(type: Test){
-    maxParallelForks = 1
-    include 'threadsafe/*'
-
+repositories {
+    mavenCentral()
 }
 
-testSingle.mustRunAfter(testMulti)
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.6.0'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.9.1'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.9.1'
+    compile group: 'commons-io', name: 'commons-io', version: '2.5'
+}
 
 ext {
     supportedVariables = ["password"]
@@ -49,16 +44,24 @@ tasks.withType(Test) {
     }
 }
 
-repositories {
-    mavenCentral()
+task testMulti(type:Test) {
+    include 'tests/*'
+    maxParallelForks = 4
+    reports {
+        junitXml.enabled = true
+        html.enabled = true
+    }
 }
 
-dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-    testCompile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.6.0'
-    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.9.1'
-    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.9.1'
-    compile group: 'commons-io', name: 'commons-io', version: '2.5'
+task testSingle(type: Test){
+    maxParallelForks = 1
+    include 'threadsafetests/*'
 }
+
+testSingle.mustRunAfter(testMulti)
+
+
+
+
 
 

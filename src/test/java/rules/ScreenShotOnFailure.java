@@ -1,4 +1,4 @@
-package util;
+package rules;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.rules.MethodRule;
