@@ -11,10 +11,8 @@ public class TestFive extends BaseTest {
     @Test
     public void TestFiveTest()
     {
-        homePage.getSearchBar().click();
-        homePage.getSearchBar().sendKeys(searchString);
-        homePage.getSearchButton().click();
+        homePage.searchFor(searchString);
 
-        Assert.assertEquals(searchString,resultsPage.getFirstHeader().getText());
+        Assert.assertEquals(searchString,resultsPage.getFirstHeaderText());
     }
 }
