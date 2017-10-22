@@ -1,8 +1,8 @@
 package tests;
 
 import base.BaseTest;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.junit.Assert;
+import org.junit.Test;
 
 public class TestFour extends BaseTest {
     private String searchString = "Thomas Jefferson";

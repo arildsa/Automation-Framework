@@ -1,8 +1,8 @@
 package threadsafe;
 
 import base.BaseTest;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.junit.Assert;
+import org.junit.Test;
 
 public class TestSeven extends BaseTest {
     private String searchString = "Lionel Messi";
