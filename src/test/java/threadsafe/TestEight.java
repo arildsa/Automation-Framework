@@ -14,6 +14,6 @@ public class TestEight extends BaseTest {
         homePage.getSearchBar().sendKeys(searchString);
         homePage.getSearchButton().click();
 
-        Assert.assertEquals(searchString,resultsPage.getFirstHeader().getText());
+        Assert.assertEquals("test",resultsPage.getFirstHeader().getText());
     }
 }

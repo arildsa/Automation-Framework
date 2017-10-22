@@ -17,7 +17,7 @@ task testMulti(type:Test) {
     include 'tests/*'
     maxParallelForks = 4
     reports {
-        junitXml.enabled = false
+        junitXml.enabled = true
         html.enabled = true
     }
 }
@@ -58,6 +58,7 @@ dependencies {
     testCompile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.6.0'
     compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.9.1'
     compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.9.1'
+    compile group: 'commons-io', name: 'commons-io', version: '2.5'
 }
 
 

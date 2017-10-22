@@ -1,9 +1,9 @@
 package base;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -11,31 +11,41 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import pages.HomePage;
 import pages.ResultsPage;
 import util.CustomCommands;
+import util.ScreenShotOnFailure;
 
 public class BaseTest extends CustomCommands{
 
     private static RemoteWebDriver driver;
     protected HomePage homePage;
     protected ResultsPage resultsPage;
-    private static final Logger log = LogManager.getLogger("Log");
 
 
-    @Before
-    public void before()
+
+    @BeforeClass
+    public static void beforeClass()
     {
         DesiredCapabilities capabilities = DesiredCapabilities.chrome();
         capabilities.setCapability(CapabilityType.BROWSER_NAME,"Chrome");
         System.setProperty("webdriver.chrome.driver","lib/chromedriver.exe");
         driver = new ChromeDriver();
+    }
+
+    @Before
+    public void before()
+    {
         driver.navigate().to("https://www.wikipedia.org/");
         homePage = new HomePage(driver);
         resultsPage = new ResultsPage(driver);
     }
 
-    @After
-    public void afterEach()
+    @AfterClass
+    public static void tearDown()
     {
         driver.quit();
     }
+
+    @Rule
+    public ScreenShotOnFailure failure = new ScreenShotOnFailure(driver);
+
 
 }
