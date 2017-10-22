@@ -1,4 +1,4 @@
-package threadsafe;
+package threadsafetests;
 
 import base.BaseTest;
 import org.junit.Assert;
