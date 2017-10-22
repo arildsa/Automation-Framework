@@ -10,10 +10,8 @@ public class TestThree extends BaseTest {
     @Test
     public void TestThreeTest()
     {
-        homePage.getSearchBar().click();
-        homePage.getSearchBar().sendKeys(searchString);
-        homePage.getSearchButton().click();
+        homePage.searchFor(searchString);
 
-        Assert.assertEquals(searchString,resultsPage.getFirstHeader().getText());
+        Assert.assertEquals(searchString,resultsPage.getFirstHeaderText());
     }
 }

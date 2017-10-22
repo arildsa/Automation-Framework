@@ -19,12 +19,19 @@ public class HomePage extends CustomCommands {
     @FindBy(css = "button[type=\"submit\"]")
     private WebElement btnSearch = null;
 
-    public WebElement getSearchBar() {
+    private WebElement getSearchBar() {
         return searchBar;
     }
 
-    public WebElement getSearchButton()
+    private WebElement getSearchButton()
     {
         return btnSearch;
+    }
+
+    public void searchFor(String searchString)
+    {
+        getSearchBar().click();
+        getSearchBar().sendKeys(searchString);
+        getSearchButton().click();
     }
 }

@@ -16,8 +16,13 @@ public class ResultsPage extends CustomCommands {
     @FindBy(id = "firstHeading")
     private WebElement firstHeader = null;
 
-    public WebElement getFirstHeader() {
+    private WebElement getFirstHeader() {
         return firstHeader;
+    }
+
+    public String getFirstHeaderText()
+    {
+        return getFirstHeader().getText();
     }
 
 
