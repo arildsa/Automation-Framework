@@ -4,11 +4,11 @@ import org.junit.rules.TestRule;
 import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
 
-public class Retry implements TestRule {
+public class RetryOnFailure implements TestRule {
 
     private int rc;
 
-    public Retry(int rc){
+    public RetryOnFailure(int rc){
         this.rc = rc;
     }
 
@@ -17,7 +17,7 @@ public class Retry implements TestRule {
             @Override
             public void evaluate() throws Throwable {
                 Throwable throwable = null;
-                //retry this many times
+                //retryOnFailure this many times
                 for(int i = 0; i < rc;i++) {
                     try {
                         base.evaluate();

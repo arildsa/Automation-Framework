@@ -10,7 +10,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import pages.HomePage;
 import pages.ResultsPage;
-import rules.Retry;
+import rules.RetryOnFailure;
 import util.CustomCommands;
 import rules.ScreenShotOnFailure;
 
@@ -19,9 +19,8 @@ public class BaseTest extends CustomCommands{
     private static RemoteWebDriver driver;
     protected HomePage homePage;
     protected ResultsPage resultsPage;
-
-
-
+    private String baseUrl = "https://www.wikipedia.org/";
+    
     @BeforeClass
     public static void beforeClass()
     {
@@ -34,7 +33,7 @@ public class BaseTest extends CustomCommands{
     @Before
     public void before()
     {
-        driver.navigate().to("https://www.wikipedia.org/");
+        driver.navigate().to(baseUrl);
         homePage = new HomePage(driver);
         resultsPage = new ResultsPage(driver);
     }
@@ -49,7 +48,7 @@ public class BaseTest extends CustomCommands{
     public ScreenShotOnFailure failure = new ScreenShotOnFailure(driver);
 
     @Rule
-    public Retry retry = new Retry(3);
+    public RetryOnFailure retryOnFailure = new RetryOnFailure(3);
 
 
 }
