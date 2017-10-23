@@ -20,9 +20,11 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     testCompile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.6.0'
+    testCompile group: 'io.rest-assured', name: 'rest-assured', version: '3.0.5'
     compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.9.1'
     compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.9.1'
     compile group: 'commons-io', name: 'commons-io', version: '2.5'
+
 }
 
 ext {
@@ -57,6 +59,12 @@ task testSingle(type: Test){
     maxParallelForks = 1
     include 'threadsafetests/*'
 }
+
+task testRestApi(type:Test){
+    maxParallelForks = 4
+    include 'REST/*'
+}
+
 
 testSingle.mustRunAfter(testMulti)
 
