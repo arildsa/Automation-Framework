@@ -16,5 +16,10 @@ public class CustomCommands {
         return element;
     }
 
+    public boolean isElementPresent(WebElement element)
+    {
+        return element.isDisplayed();
+    }
+
 
 }
