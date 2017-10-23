@@ -14,7 +14,8 @@ public class ResponseHeaderData extends RESTBase {
 
         given().
                 when().
-                get(getRestUrl() + "/api/f1/2017/circuits.json").
+//                get(getRestUrl() + "/api/f1/2017/circuits.json").
+                get("/f1/2017/circuits.json").
                 then().
                 assertThat().
                 statusCode(200).

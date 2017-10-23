@@ -12,7 +12,7 @@ public class NumberOfCircuitsFor2017Season extends RESTBase {
     public void NumberOfCircuitsFor2017SeasonTest(){
         given().
                 when().
-                get(getRestUrl() + "/api/f1/2017/circuits.json").
+                get("/f1/2017/circuits.json").
             then().
                 assertThat().
                 statusCode(200).
