@@ -47,13 +47,17 @@ tasks.withType(Test) {
     }
 }
 
-task testMulti(type:Test) {
-    include 'tests/*'
-    maxParallelForks = 4
+tasks.withType(Test){
     reports {
         junitXml.enabled = true
         html.enabled = true
     }
+}
+
+task testMulti(type:Test) {
+    include 'tests/*'
+    maxParallelForks = 4
+
 }
 
 task testSingle(type: Test){
@@ -63,6 +67,14 @@ task testSingle(type: Test){
 
 task testRestApi(type:Test){
     maxParallelForks = 4
+    include 'REST/*'
+}
+
+task test1(type:Test){
+    include 'REST/*'
+}
+
+task test2(type:Test){
     include 'REST/*'
 }
 
