@@ -25,9 +25,9 @@ public class BaseTest extends CustomCommands{
     public static void beforeClass()
     {
         if (System.getProperty("os.name").contains("Mac")){
-            System.setProperty("webdriver.chrome.driver", "lib/chromedriverMac");
+            System.setProperty("webdriver.chrome.driver", "lib/chromedriverMac.exe");
         } else if (System.getProperty("os.name").contains("Linux")) {
-            System.setProperty("webdriver.chrome.driver", "lib/chromedriverLinux");
+            System.setProperty("webdriver.chrome.driver", "lib/chromedriverLinux.exe");
         } else if(System.getProperty("os.name").contains("Windows")) {
             System.setProperty("webdriver.chrome.driver","lib/chromedriver.exe");
         }
