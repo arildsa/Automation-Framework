@@ -18,9 +18,6 @@ general:
     - "screenshots"
     - "build"
     - "logs"
-  branches:
-    only:
-      - master
 
 machine:
   environment:
