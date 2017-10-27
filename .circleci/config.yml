@@ -1,17 +1,17 @@
-dependencies:
-  pre:
-    - source environmentSetup.sh && copyEnvVarsToGradleProperties
-  override:
-    - export TERM="dumb"; ./gradlew compileTestJava
-  cache_directories:
-    - ~/.gradle
+#dependencies:
+#  pre:
+#    - source environmentSetup.sh && copyEnvVarsToGradleProperties
+#  override:
+#    - export TERM="dumb"; ./gradlew compileTestJava
+#  cache_directories:
+#    - ~/.gradle
 
 test:
   post:
     - mkdir -p $CIRCLE_TEST_REPORTS/junit/
     - find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
-  override:
-    - sh ./runTest.sh
+#  override:
+#    - sh ./runTest.sh
 
 general:
   artifacts:
