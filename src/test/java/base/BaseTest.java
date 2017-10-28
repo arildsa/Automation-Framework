@@ -11,8 +11,8 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import pages.HomePage;
 import pages.ResultsPage;
 import rules.RetryOnFailure;
-import util.CustomCommands;
 import rules.ScreenShotOnFailure;
+import util.CustomCommands;
 
 public class BaseTest extends CustomCommands{
 
@@ -53,10 +53,10 @@ public class BaseTest extends CustomCommands{
     }
 
     @Rule
-    public ScreenShotOnFailure failure = new ScreenShotOnFailure(driver);
+    public RetryOnFailure retryOnFailure = new RetryOnFailure(3);
 
     @Rule
-    public RetryOnFailure retryOnFailure = new RetryOnFailure(3);
+    public ScreenShotOnFailure failure = new ScreenShotOnFailure(driver);
 
 
 }
