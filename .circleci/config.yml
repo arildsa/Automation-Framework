@@ -13,7 +13,7 @@ jobs:
                 - gradle-cache-{{ .Branch }}-{{ checksum "build.gradle" }}
           - run:
               name: Download Dependencies
-              command: gradlew compileTestJava
+              command: gradle compileTestJava
           - save_cache:
               paths:
                 - ~/.gradle
