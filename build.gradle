@@ -66,7 +66,7 @@ task testSingle(type: Test){
 }
 
 task testRestApi(type:Test){
-    maxParallelForks = 4
+    maxParallelForks = 8
     include 'REST/*'
 }
 testMulti.mustRunAfter(testRestApi)
