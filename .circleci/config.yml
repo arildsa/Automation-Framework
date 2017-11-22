@@ -19,6 +19,9 @@ jobs:
                 - ~/.gradle
               key: gradle-cache-{{ .Branch }}-{{ checksum "build.gradle" }}
           - run:
+              name: Setup
+              command: source environmentSetup.sh && copyEnvVarsToGradleProperties
+          - run:
               name: Run Tests
               command: sh ./runTest.sh
           - run:
