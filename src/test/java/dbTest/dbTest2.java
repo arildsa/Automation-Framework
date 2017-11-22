@@ -37,10 +37,11 @@ public class dbTest2 {
             statement = conn.createStatement();
             result = statement.executeQuery("select * from CustomerTraining.Customer");
 
-            if(result.next())
-            {
-                System.out.println();
-            }
+//            if(result.next())
+//            {
+//                System.out.println(result);
+//            }
+
 
         } catch (SQLException ex){
             Logger lgr = Logger.getLogger(Version.class.getName());

@@ -30,7 +30,7 @@ dependencies {
 }
 
 ext {
-    supportedVariables = ["dbPassword","dbUser"]
+    supportedVariables = ["dbPassword","dbUser", "googlePlacesKey"]
 }
 
 tasks.withType(Test) {
