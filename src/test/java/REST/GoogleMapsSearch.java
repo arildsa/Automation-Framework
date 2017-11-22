@@ -23,7 +23,6 @@ public class GoogleMapsSearch extends RESTBase {
             param("key",getGoogleKey()).
             param("location","-33.8670522,151.1957362").
             param("radius","500").
-
         when().
             get("/maps/api/place/nearbysearch/json").
         then().
