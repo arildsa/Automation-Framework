@@ -15,7 +15,7 @@ public class GoogleMapsSearch extends RESTBase {
     @Test
     public void firstTest()
     {
-        System.out.println("key is" + getGoogleKey());
+        System.out.println("key is " + getGoogleKey());
         given().
             config(RestAssured.config().jsonConfig(jsonConfig().numberReturnType(BIG_DECIMAL))).
             param("key",getGoogleKey()).

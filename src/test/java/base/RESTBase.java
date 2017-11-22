@@ -6,8 +6,8 @@ import util.CustomCommands;
 
 public class RESTBase extends CustomCommands{
 
-        private static String restUrl = "https://maps.googleapis.com";
-        private static String key = System.getProperty("googlePlacesKey");
+        protected static String restUrl = "https://maps.googleapis.com";
+        protected static String key = System.getProperty("googlePlacesKey");
 
     @BeforeClass
     public static void setup() {
