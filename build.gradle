@@ -56,7 +56,7 @@ tasks.withType(Test){
 }
 
 task testMulti(type:Test) {
-    include 'tests/*'
+    include 'SeleniumTests/*'
     maxParallelForks = 4
 
 }

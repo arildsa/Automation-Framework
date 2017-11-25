@@ -1,14 +1,14 @@
-package tests;
+package SeleniumTests;
 
 import base.BaseTest;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class TestSeven extends BaseTest {
-    private String searchString = "Pope";
+public class TestTen extends BaseTest {
+    private String searchString = "Colorado";
 
     @Test
-    public void TestSevenTest()
+    public void TestTenTest()
     {
         homePage.searchFor(searchString);
 

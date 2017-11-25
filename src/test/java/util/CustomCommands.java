@@ -20,6 +20,4 @@ public class CustomCommands {
     {
         return element.isDisplayed();
     }
-
-
 }
