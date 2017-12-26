@@ -24,10 +24,10 @@ public class RESTBase extends CustomCommands{
     public static void setup()
     {
         restUrl = "https://api.twitter.com/1.1";
-        consumerKey = System.getProperty("consumerKey");
-        consumerSecret = System.getProperty("consumerSecret");
-        token = System.getProperty("token");
-        tokenSecret = System.getProperty("tokenSecret");
+        consumerKey = System.getProperty("twitterConsumerKey");
+        consumerSecret = System.getProperty("twitterConsumerSecret");
+        token = System.getProperty("twitterToken");
+        tokenSecret = System.getProperty("twitterTokenSecret");
     }
 
     public static RequestSpecification requestSetup() {
