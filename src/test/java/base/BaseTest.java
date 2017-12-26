@@ -8,7 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import pages.HomePage;
+import pages.HomePage.HomePage;
 import pages.ResultsPage;
 import rules.RetryOnFailure;
 import rules.ScreenShotOnFailure;
