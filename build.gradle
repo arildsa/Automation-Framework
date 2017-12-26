@@ -27,10 +27,16 @@ dependencies {
     compile group: 'commons-io', name: 'commons-io', version: '2.5'
     compile group: 'org.springframework', name: 'spring-jdbc', version: '5.0.1.RELEASE'
     compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.8-dmr'
+    compile group: 'com.github.scribejava', name: 'scribejava-apis', version: '2.5.3'
+    compile group: 'com.github.scribejava', name: 'scribejava-core', version: '2.5.3'
+
+
+
+
 }
 
 ext {
-    supportedVariables = ["dbPassword","dbUser", "googlePlacesKey"]
+    supportedVariables = ["dbPassword","dbUser", "consumerKey", "consumerSecret", "token", "tokenSecret"]
 }
 
 tasks.withType(Test) {
@@ -43,8 +49,13 @@ tasks.withType(Test) {
     dependsOn 'cleanTest'
     testLogging.exceptionFormat = 'full'
     testLogging {
-        events "passed", "failed", "standardOut"
+        events "passed", "failed"
         displayGranularity 1
+        afterSuite { desc, result ->
+            if (!desc.parent) { // will match the outermost suite
+                println "Results: ${result.resultType} (${result.testCount} tests, ${result.successfulTestCount} successes, ${result.failedTestCount} failures, ${result.skippedTestCount} skipped)"
+            }
+        }
     }
 }
 
