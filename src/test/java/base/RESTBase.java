@@ -15,19 +15,19 @@ public class RESTBase extends CustomCommands{
     private static RequestSpecification spec;
 
     private static String restUrl;
-    private static String consumerKey;
-    private static String consumerSecret;
-    private static String token;
-    private static String tokenSecret;
+    private static String twitterConsumerKey;
+    private static String twitterConsumerSecret;
+    private static String twitterToken;
+    private static String twitterTokenSecret;
 
     @BeforeClass
     public static void setup()
     {
         restUrl = "https://api.twitter.com/1.1";
-        consumerKey = System.getProperty("twitterConsumerKey");
-        consumerSecret = System.getProperty("twitterConsumerSecret");
-        token = System.getProperty("twitterToken");
-        tokenSecret = System.getProperty("twitterTokenSecret");
+        twitterConsumerKey = System.getProperty("twitterConsumerKey");
+        twitterConsumerSecret = System.getProperty("twitterConsumerSecret");
+        twitterToken = System.getProperty("twitterToken");
+        twitterTokenSecret = System.getProperty("twitterTokenSecret");
     }
 
     public static RequestSpecification requestSetup() {
@@ -48,23 +48,23 @@ public class RESTBase extends CustomCommands{
         return jsonPath;
     }
 
-    public static String getConsumerKey()
+    public static String getTwitterConsumerKey()
     {
-        return consumerKey;
+        return twitterConsumerKey;
     }
 
-    public static String getConsumerSecret()
+    public static String getTwitterConsumerSecret()
     {
-        return consumerSecret;
+        return twitterConsumerSecret;
     }
 
-    public static String getToken()
+    public static String getTwitterToken()
     {
-        return token;
+        return twitterToken;
     }
 
     public static String getTokenkey()
     {
-        return tokenSecret;
+        return twitterTokenSecret;
     }
 }

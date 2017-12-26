@@ -12,7 +12,7 @@ public class twitter_home_timeline extends RESTBase {
     public void getHomeTimeLineResults(){
         given()
                 .spec(requestSetup())
-                    .auth().oauth(getConsumerKey(),getConsumerSecret(),getToken(),getTokenkey())
+                    .auth().oauth(getTwitterConsumerKey(), getTwitterConsumerSecret(), getTwitterToken(),getTokenkey())
                 .when()
                     .get("/statuses/home_timeline.json")
                 .then()

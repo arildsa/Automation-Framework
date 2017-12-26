@@ -28,6 +28,9 @@ function copyEnvVarsToGradleProperties {
         echo "Writing TEST_API_KEY to gradle.properties..."
         echo "dbUser=$dbUser" >> ${GRADLE_PROPERTIES}
         echo "dbPassword=$dbPassword" >> ${GRADLE_PROPERTIES}
-        echo "googlePlacesKey=$googlePlacesKey" >> ${GRADLE_PROPERTIES}
+        echo "twitterConsumerKey=$twitterConsumerKey" >> ${GRADLE_PROPERTIES}
+        echo "twitterConsumerSecret=$twitterConsumerSecret" >> ${GRADLE_PROPERTIES}
+        echo "twitterToken=$twitterToken" >> ${GRADLE_PROPERTIES}
+        echo "twitterTokenSecret=$twitterTokenSecret" >> ${GRADLE_PROPERTIES}
 
 }
