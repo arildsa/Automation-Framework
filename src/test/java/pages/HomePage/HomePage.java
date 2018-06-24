@@ -16,10 +16,10 @@ public class HomePage extends CustomCommands {
         PageFactory.initElements(driver,this);
     }
 
-    @FindBy(id = "searchInput")
+    @FindBy(css = "#search-input #searchInput")
     private WebElement searchBar = null;
 
-    @FindBy(css = "button[type=\"submit\"]")
+    @FindBy(css = "button[type='submit']")
     private WebElement btnSearch = null;
 
     @FindBy(css = "img[class='central-featured-logo']")
