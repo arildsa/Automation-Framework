@@ -34,8 +34,8 @@ public class BaseTest extends CustomCommands{
             System.setProperty("webdriver.chrome.driver", "lib/chromedriverLinux.exe");
             file = new File("lib/chromedriverLinux.exe");
         } else if(System.getProperty("os.name").contains("Windows")) {
-            System.setProperty("webdriver.chrome.driver","lib/chromedriver.exe");
-            file = new File("lib/chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver","lib/chromedriverWin.exe");
+            file = new File("lib/chromedriverWin.exe");
         }
 
         file.setExecutable(true);

@@ -1,14 +1,16 @@
 package REST;
 
 import base.RESTBase;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.equalTo;
 
 public class twitter_home_timeline extends RESTBase {
 
     @Test
+    @Ignore
     public void getHomeTimeLineResults(){
         given()
                 .spec(requestSetup())
