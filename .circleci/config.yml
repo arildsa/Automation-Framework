@@ -6,6 +6,10 @@ jobs:
         working_directory: ~/SeleniumFramework
         docker:
           - image: circleci/openjdk:8-browsers
+        environment:
+          # from https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_install_cli_standalone.htm
+          # and https://developer.salesforce.com/media/salesforce-cli/manifest.json
+          - DX_CLI_URL: https://developer.salesforce.com/media/salesforce-cli/sfdx-linux-amd64.tar.xz
         steps:
           - checkout
           - restore_cache:
@@ -18,6 +22,33 @@ jobs:
               paths:
                 - ~/.gradle
               key: gradle-cache-{{ .Branch }}-{{ checksum "build.gradle" }}
+          - run:
+              name: Download CLI
+              command: |
+                mkdir sfdx
+                wget -qO- $DX_CLI_URL | tar xJ -C sfdx --strip-components 1
+          - run:
+              name: Install CLI
+              command: |
+                ./sfdx/install
+                sfdx
+                mkdir tmp
+          - run:
+              name: Create hub key
+              command: |
+                echo 'make hub key'
+                #- mkdir keys
+                #- echo $HUB_SERVER_KEY_HEX | xxd -r -ps >> keys/hub.key
+                openssl enc -nosalt -aes-256-cbc -d -in assets/server.key.enc -out assets/server.key -base64 -K $DECRYPTION_KEY -iv $DECRYPTION_IV
+                #- openssl rsa -in keys/hub.key -check -noout
+          - run:
+              name: Setup Org
+              command: |
+                echo 'Running tests'
+                sfdx force:auth:jwt:grant --clientid $HUB_CONSUMER_KEY --jwtkeyfile assets/server.key --username $HUB_SFDC_USER --setdefaultdevhubusername -a hub
+                sfdx force --help
+                sfdx force:org:create -s -f ~/SeleniumFramework/config/project-scratch-def.json -a circle_build_$CIRCLE_BUILD_NUM --wait 5
+                sfdx force:source:push -u circle_build_$CIRCLE_BUILD_NUM
           - run:
               name: Setup
               command: source environmentSetup.sh && copyEnvVarsToGradleProperties
@@ -41,6 +72,11 @@ jobs:
           - store_artifacts:
               path: logs/Test.log
               destination: logs/Test.log
+          - run:
+              name: Delete Scratch Org
+              command: |
+                sfdx force:org:delete -u circle_build_$CIRCLE_BUILD_NUM -p
+
 workflows:
     version: 2
     branches:
