@@ -23,12 +23,12 @@ jobs:
                 - ~/.gradle
               key: gradle-cache-{{ .Branch }}-{{ checksum "build.gradle" }}
           - run:
-              name: Download CLI
+              name: Download Salesforce CLI
               command: |
                 mkdir sfdx
                 wget -qO- $DX_CLI_URL | tar xJ -C sfdx --strip-components 1
           - run:
-              name: Install CLI
+              name: Install Salesforce CLI
               command: |
                 ./sfdx/install
                 sfdx
@@ -47,7 +47,7 @@ jobs:
                 echo 'Running tests'
                 sfdx force:auth:jwt:grant --clientid $HUB_CONSUMER_KEY --jwtkeyfile assets/server.key --username $HUB_SFDX_USER --setdefaultdevhubusername -a hub
                 sfdx force --help
-                sfdx force:org:create -s -f ~/SeleniumFramework/config/project-scratch-def.json -a circle_build_$CIRCLE_BUILD_NUM --wait 5
+                sfdx force:org:create -s -f ~/SeleniumFramework/.circleci/project-scratch-def.json -a circle_build_$CIRCLE_BUILD_NUM --wait 5
                 sfdx force:source:push -u circle_build_$CIRCLE_BUILD_NUM
           - run:
               name: Setup
